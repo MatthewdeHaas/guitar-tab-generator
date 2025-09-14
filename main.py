@@ -23,10 +23,13 @@ def plot_audio(file, domain="time", truncate=False):
     samplerate, data = wavfile.read(file)
     if domain == "time":
         plt.title(f"{file} - audio")
+
         f = sf.SoundFile(file)
+
         plt.plot(np.linspace(0, f.frames / f.samplerate, len(list(data[:, 0]))), data[:, 0])
         plt.xlabel("Time (sec)")
         plt.ylabel("Air Pressure (...)")
+
     elif domain == "frequency":
         plt.title(f"{file[file.rfind('/') + 1:]} - Discrete Fourier Transform")
         xf = fftfreq(data.shape[0], 1 / samplerate)
