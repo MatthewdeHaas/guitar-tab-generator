@@ -39,7 +39,7 @@ def plot_audio(file, domain="time", truncate=False):
     plt.show()
 
 
-file = "media/Notes/E0.wav"
+file = "media/Chords/D5.wav"
 plot_audio(file, domain="frequency", truncate=True)
 
 
