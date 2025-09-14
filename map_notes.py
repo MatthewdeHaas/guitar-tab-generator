@@ -5,6 +5,9 @@ from itertools import takewhile, count
 
 NOTES_NAME = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"]
 
+with open("data/note_map.json", "r") as f:
+    NOTES_MAP = json.load(f)
+
 
 # NOTE: start_frequency here is a C2
 def note_map(start_frequency=65.40639, start_octave=2, end_octave=7):
@@ -23,10 +26,8 @@ def create_note_map():
 
 # Maps a given frequency to the closest note on the note map
 def get_closest_note(frequency):
-    note_dict = note_map()
-    closest_note = min(note_dict .values(), key=lambda x: abs(x - frequency))
-
-    return list(note_dict.keys())[list(note_dict .values()).index(closest_note)]
+    closest_note = min(NOTES_MAP.values(), key=lambda x: abs(x - frequency))
+    return list(NOTES_MAP.keys())[list(NOTES_MAP.values()).index(closest_note)]
 
 
 
